@@ -1,0 +1,5 @@
+Winform + Devexpress 项目
+
+1、从MongoDB中导出REC文件
+2、从Kbase中导出REC文件
+3、将REC文件数据更新到kbase数据库中
