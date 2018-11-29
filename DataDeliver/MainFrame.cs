@@ -13,6 +13,9 @@ using System.IO;
 
 namespace DataDeliver
 {
+    /// <summary>
+    /// 测试用程序
+    /// </summary>
     public partial class MainFrame : Form
     {
         public Action<bool, int> ReportMysqlProgress;
