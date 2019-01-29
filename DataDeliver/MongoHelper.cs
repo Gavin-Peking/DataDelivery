@@ -131,7 +131,7 @@ namespace DataDeliver
                                     {
                                         var key = dic.Key;
                                         var value = dic.Value;
-                                        Writer.WriteLine($"<{(string.IsNullOrEmpty(value) ? key : value)}>={item.GetValue(key, "")?.ToString() ?? ""}");
+                                        Writer.WriteLine($"<{(string.IsNullOrEmpty(value) ? key : value)}>={item.GetValue(key, "")?.ToString().RemoveInvalidSpace() ?? ""}");
                                     }
                                 }
                             }

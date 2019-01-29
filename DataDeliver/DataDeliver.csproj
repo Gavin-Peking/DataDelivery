@@ -95,6 +95,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extention.cs" />
     <Compile Include="KbaseHelper.cs" />
     <Compile Include="MainFrame.cs">
       <SubType>Form</SubType>

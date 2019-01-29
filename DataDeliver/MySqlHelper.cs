@@ -84,7 +84,7 @@ namespace DataDeliver
                                         ColIndex++;
                                         var key = dic.Key;
                                         var value = dic.Value;
-                                        Writer.WriteLine($"<{(string.IsNullOrEmpty(value) ? key : value)}>={(Reader.IsDBNull(ColIndex) ? "" : Reader.GetValue(ColIndex).ToString())}");
+                                        Writer.WriteLine($"<{(string.IsNullOrEmpty(value) ? key : value)}>={(Reader.IsDBNull(ColIndex) ? "" : Reader.GetValue(ColIndex).ToString().RemoveInvalidSpace())}");
                                     }
                                 }
                             }
