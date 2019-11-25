@@ -5,15 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using TPI;
 using System.IO;
+using System.Configuration;
 
 
 namespace DataDeliver
 {
     public class KbaseHelper
     {
-        private static string ConnIp { get; set; } = "192.168.106.60";
-        private static int Port { get; set; } = 4567;
-        private static string UserName { get; set; } = "DBOWN";
+        private static string ConnIp { get; set; } 
+        private static int Port { get; set; }
+        private static string UserName { get; set; }
+
+        static KbaseHelper()
+        {
+            ConnIp = ConfigurationManager.AppSettings["Kip"]?.ToString() ?? "";
+            Port = Convert.ToInt32(ConfigurationManager.AppSettings["Kport"]?.ToString() ?? "4567");
+            UserName = ConfigurationManager.AppSettings["Kname"]?.ToString() ?? "DBOWN";
+        }
 
         internal static List<string> GetCols(string tableName)
         {

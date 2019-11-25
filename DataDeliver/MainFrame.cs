@@ -36,6 +36,9 @@ namespace DataDeliver
         /// <param name="e"></param>
         private void xtraTabControl1_Enter(object sender, EventArgs e)
         {
+            // 禁止显示导出Mongo数据页签
+            // tbpExport.PageVisible= false;
+
             var TabName = xtraTabControl1.SelectedTabPage.Name;
             WindowInit(TabName);
         }

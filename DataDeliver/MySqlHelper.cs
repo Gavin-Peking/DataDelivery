@@ -6,17 +6,26 @@ using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using Dapper;
 using System.IO;
+using System.Configuration;
 
 namespace DataDeliver
 {
     public class MySqlHelper
     {
-        public static string _ConnStr = @"Server=192.168.106.60;Database={0};Uid=root;Pwd=cnkittod;default command timeout=7200;";
+        public static string _ConnStr { get; set; }
 
+        static MySqlHelper()
+        {
+            var ip = ConfigurationManager.AppSettings["Mip"]?.ToString() ?? "";
+            var port = ConfigurationManager.AppSettings["Mport"]?.ToString() ?? "3306";
+            var name = ConfigurationManager.AppSettings["Mname"]?.ToString() ?? "";
+            var psw = ConfigurationManager.AppSettings["Mpass"]?.ToString() ?? "";
+            _ConnStr = @"Server=" + ip + ";Port=" + port + ";Database={0};Uid=" + name + ";Pwd=" + psw + ";default command timeout=7200;";
+        }
 
         internal static List<string> GetDBNames()
         {
-            using (var Conn = new MySqlConnection(string.Format(_ConnStr, "wenku_data")))
+            using (var Conn = new MySqlConnection(string.Format(_ConnStr, "mysql")))
             {
                 return Conn.Query<string>("SHOW DATABASES;").ToList();
             }
